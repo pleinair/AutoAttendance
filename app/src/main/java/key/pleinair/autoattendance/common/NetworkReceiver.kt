@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.media.AudioManager
 import android.net.NetworkInfo
 import android.net.ConnectivityManager
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 
@@ -27,14 +28,16 @@ class NetworkReceiver : BroadcastReceiver() {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = cm.activeNetworkInfo
 
+        Log.d(TAG, "ほげーーーーー")
         Log.d(TAG, context.toString())
         Log.d(TAG, networkInfo.toString())
 
-        // TODO 特定のSSIDの場合はAPIを叩く
-
-        val toast = Toast.makeText(context, networkInfo.typeName, Toast.LENGTH_LONG)
+        val toast = Toast.makeText(context, networkInfo.extraInfo, Toast.LENGTH_LONG)
         toast.view.setBackgroundColor(Color.GREEN)
         toast.show()
+        // TODO 特定のSSIDの場合はAPIを叩く
+        if (TextUtils.equals(networkInfo.extraInfo , "imuraya-g")) {
+        }
     }
 
     fun changeAllVolume(context: Context?) {

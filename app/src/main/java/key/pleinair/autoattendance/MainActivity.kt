@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         // 暗黙broadcast登録テスト
         val receiver = NetworkReceiver()
         val filter = IntentFilter()
-        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(receiver, filter)
 
         fab.setOnClickListener { view ->
